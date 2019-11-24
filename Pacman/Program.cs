@@ -16,7 +16,7 @@ namespace Pacman
         Wall,
 
     }
-    class Mover
+    class Pacman
     {
         public int x;
         public int y;
@@ -42,7 +42,7 @@ namespace Pacman
     class Program
     {
        
-        static void Init(CellType[,] board, Mover PacmanOBJ, Mover Ghost)
+        static void Init(CellType[,] board, Pacman PacmanOBJ)
         {
            int rows = board.GetLength(0);
            int cols = board.GetLength(1);
@@ -64,13 +64,13 @@ namespace Pacman
             board[3,4] = CellType.Wall;
 
             //Ghosts
-            board[Ghost.getY(), Ghost.getX()] = CellType.Ghost;
+            
         }
 
         /////////////////
 
 
-        static void UpdateBoard(Mover PacmanObject, CellType[,] board, string userInput, int rows, int cols)
+        static void UpdateBoard(Pacman PacmanObject, CellType[,] board, string userInput, int rows, int cols)
         {
             board[PacmanObject.getY(), PacmanObject.getX()] = CellType.Cell;
 
@@ -123,12 +123,10 @@ namespace Pacman
 
             const int ROWS = 10, COLS = 10;
             CellType[,] board = new CellType[ROWS, COLS];
-            Mover PacmanOBJ = new Mover();
-            Mover Ghost = new Mover();
-            Ghost.x = 9;
-            Ghost.y = 9;
+            Pacman PacmanOBJ = new Pacman();
+
             //Initialize Loop
-            Init(board, PacmanOBJ, Ghost);
+            Init(board, PacmanOBJ);
 
 
 
@@ -166,10 +164,12 @@ namespace Pacman
                 string userInput = Console.ReadLine();
                 
                 UpdateBoard(PacmanOBJ, board, userInput, ROWS, COLS);
+                /*
                if(PacmanOBJ.getX() == Ghost.getX() && PacmanOBJ.getX() == Ghost.getY())
                 {
                     gameOver(); 
                 }
+                */
                 
             }
             void gameOver()

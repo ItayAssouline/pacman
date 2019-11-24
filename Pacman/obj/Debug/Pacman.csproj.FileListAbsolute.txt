@@ -5,3 +5,10 @@ Z:\איתי אסולין\Pacman\Pacman\Pacman\obj\Debug\Pacman.csprojAssemblyRef
 Z:\איתי אסולין\Pacman\Pacman\Pacman\obj\Debug\Pacman.csproj.CoreCompileInputs.cache
 Z:\איתי אסולין\Pacman\Pacman\Pacman\obj\Debug\Pacman.exe
 Z:\איתי אסולין\Pacman\Pacman\Pacman\obj\Debug\Pacman.pdb
+Z:\איתי אסולין\Pacman Git\pacman\Pacman\bin\Debug\Pacman.exe.config
+Z:\איתי אסולין\Pacman Git\pacman\Pacman\bin\Debug\Pacman.exe
+Z:\איתי אסולין\Pacman Git\pacman\Pacman\bin\Debug\Pacman.pdb
+Z:\איתי אסולין\Pacman Git\pacman\Pacman\obj\Debug\Pacman.csprojAssemblyReference.cache
+Z:\איתי אסולין\Pacman Git\pacman\Pacman\obj\Debug\Pacman.csproj.CoreCompileInputs.cache
+Z:\איתי אסולין\Pacman Git\pacman\Pacman\obj\Debug\Pacman.exe
+Z:\איתי אסולין\Pacman Git\pacman\Pacman\obj\Debug\Pacman.pdb

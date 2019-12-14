@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-	class Pacman
+	class Pacman : IMover
 	{
 		public int x;
 		public int y;
@@ -26,6 +26,9 @@ namespace Pacman
 			y = yGot;
 
 		}
-
+		public override string ToString()
+		{
+			return "+";
+		}
 	}
 }

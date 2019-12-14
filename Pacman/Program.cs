@@ -7,21 +7,28 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-    public enum CellType
-    {
-        
+	interface IMover
+	{
+		int getX();
+		int getY();
+	}
+
+		public enum GamePiece
+		{
         Pacman,
         Cell,
         Ghost,
         Wall,
+		}
 
-    }
-    
+	
+	
 
-    class Program
+
+	class Program
     {
        
-        static void Init(CellType[,] board, Pacman PacmanOBJ)
+        static void Init(GamePiece[,] board, Pacman PacmanOBJ)
         {
            int rows = board.GetLength(0);
            int cols = board.GetLength(1);
@@ -29,18 +36,19 @@ namespace Pacman
             {
                 for (int colsIdx = 0; colsIdx < cols; colsIdx++)
                 {
-                    board[rowIdx, colsIdx] = CellType.Cell;
-                }
+                    board[rowIdx, colsIdx] = GamePiece.Cell;
+					
+				}
                 
             }
 
             
             PacmanOBJ.ChangeLocation(0, 0);
 
-            board[PacmanOBJ.getX(), PacmanOBJ.getY()] = CellType.Pacman;
+            board[PacmanOBJ.getX(), PacmanOBJ.getY()] = GamePiece.Pacman;
 
             //Obstcales
-            board[3,4] = CellType.Wall;
+            board[3,4] = GamePiece.Wall;
 
             //Ghosts
             
@@ -49,16 +57,16 @@ namespace Pacman
         /////////////////
 
 
-        static void UpdateBoard(Pacman PacmanObject, CellType[,] board, string userInput, int rows, int cols)
+        static void UpdateBoard(Pacman PacmanObject, GamePiece[,] board, string userInput, int rows, int cols)
         {
-            board[PacmanObject.getY(), PacmanObject.getX()] = CellType.Cell;
+            board[PacmanObject.getY(), PacmanObject.getX()] = GamePiece.Cell;
 
             //Update Before Board
 
             if (userInput == "a" || userInput == "A" || userInput == "ש")
             {
                 ///////////////////
-                if (PacmanObject.getX() > 0 && board[PacmanObject.getY(), PacmanObject.getX() + -1] != CellType.Wall)
+                if (PacmanObject.getX() > 0 && board[PacmanObject.getY(), PacmanObject.getX() + -1] != GamePiece.Wall)
                 {
                     PacmanObject.x -= 1;
                 }
@@ -66,7 +74,7 @@ namespace Pacman
             }
             else if (userInput == "d" || userInput == "D" || userInput == "ג")
             {
-                if (PacmanObject.getX() < rows-1 && board[PacmanObject.getY(), PacmanObject.getX()+1] != CellType.Wall)
+                if (PacmanObject.getX() < rows-1 && board[PacmanObject.getY(), PacmanObject.getX()+1] != GamePiece.Wall)
                 {
                     PacmanObject.x += 1;
                 }
@@ -76,7 +84,7 @@ namespace Pacman
 
             else if (userInput == "S" || userInput == "s" || userInput == "ד")
             {
-                if (PacmanObject.getY() < cols - 1 && board[PacmanObject.getY()+1, PacmanObject.getX()] != CellType.Wall)
+                if (PacmanObject.getY() < cols - 1 && board[PacmanObject.getY()+1, PacmanObject.getX()] != GamePiece.Wall)
                 {
                     PacmanObject.y += 1;
                 }
@@ -85,14 +93,14 @@ namespace Pacman
             else if (userInput == "w" || userInput == "W" || userInput == "'")
             {
                 ///////////////////
-                if (PacmanObject.getY() > 0 && board[PacmanObject.getY() - 1, PacmanObject.getX()] != CellType.Wall)
+                if (PacmanObject.getY() > 0 && board[PacmanObject.getY() - 1, PacmanObject.getX()] != GamePiece.Wall)
                 {
                     PacmanObject.y -= 1;
                 }
                 
             }
             //Update Pacman
-            board[PacmanObject.getY(), PacmanObject.getX()] = CellType.Pacman;
+            board[PacmanObject.getY(), PacmanObject.getX()] = GamePiece.Pacman;
 
             
         }
@@ -101,44 +109,47 @@ namespace Pacman
         {
 
             const int ROWS = 10, COLS = 10;
-            CellType[,] board = new CellType[ROWS, COLS];
+            GamePiece[,] board = new GamePiece[ROWS, COLS];
             Pacman PacmanOBJ = new Pacman();
 
             //Initialize Loop
             Init(board, PacmanOBJ);
-
-
-
-
             //Game Loop
             bool isOn = true;
             while (isOn)
             {
-
                 Console.Clear();
-
                 for (int rowIdx = 0; rowIdx < ROWS; rowIdx++)
                 {
                     for (int colsIdx = 0; colsIdx < COLS; colsIdx++)
                     {
-                        if (board[rowIdx, colsIdx] == CellType.Cell)
+						//Console.Write(board[colsIdx,rowIdx]);
+						
+						
+
+						///Previous Displaying
+						
+                        if (board[rowIdx, colsIdx] == GamePiece.Cell)
                         {
                             Console.Write(".");
                         }
-                        else if (board[rowIdx, colsIdx] == CellType.Pacman)
+                        else if (board[rowIdx, colsIdx] == GamePiece.Pacman)
                         {
                             Console.Write("+");
                         }
-                        else if (board[rowIdx, colsIdx] == CellType.Ghost)
+                        else if (board[rowIdx, colsIdx] == GamePiece.Ghost)
                         {
                             Console.Write("X");
                         }
-                        else if (board[rowIdx, colsIdx] == CellType.Wall)
+                        else if (board[rowIdx, colsIdx] == GamePiece.Wall)
                         {
                             Console.Write("|");
                         }
-                    }
+						
+					}
+
                     Console.WriteLine();
+					
                 }
                 string userInput = Console.ReadLine();
                 

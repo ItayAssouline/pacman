@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
+
 	class Pacman : GamePiece, IMover
 	{
-		public int x;
+        public Pacman() : base(PieceType.Pacman)
+        {
+        }
+
+        public int x;
 		public int y;
 
 		public int getX()

@@ -8,7 +8,10 @@ namespace Pacman
 {
 	class Cell : GamePiece
 	{
-		public override string ToString()
+        public Cell() : base(PieceType.Cell)
+        {
+        }
+        public override string ToString()
 		{
 			return ".";
 		}

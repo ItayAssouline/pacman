@@ -1,56 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Pacman
 {
+    class MoveOption
+    {
+        int x;
+        int y;
+        double distance;
+        public void setX(int x)
+        {
+            this.x = x;
+        }
+        public void setY(int y)
+        {
+            this.y = y;
+        }
+        public void setDistance(double distance)
+        {
+            this.distance = distance;
+        }
+
+        public double getDistance()
+        {
+            return this.distance;
+        }
+    }
 	class Ghost : GamePiece, IMover
 	{
+        public Ghost() : base(PieceType.Ghost)
+        {
+        }
 
-		private int x;
+        private int x;
 		private int y;
 
-		public double pithagoras(int PacX, int PacY)
-		{
-			double res = Math.Sqrt(PacX * PacX + PacY * PacY);
-			return res;
-		}
-		public void PithagorianCheck(Pacman PacmanOBJ)
-		{
-			int PacX = PacmanOBJ.getX();
-			int PacY = PacmanOBJ.getY();
-			/*
-			int PacXDistance = Math.Abs(PacX-x);
-			int PacYDistance = Math.Abs(PacY-y);
-			*/
-			if(pithagoras(Math.Abs(PacX-(x-1)), Math.Abs(PacY - y)) < pithagoras(Math.Abs(PacX - (x + 1)), Math.Abs(PacY - y)))
-			{
+        public static double CalcDistance(int x1, int y1, int x2, int y2)
+        {
+            double distance;
+            int disX = x1 - x2;
+            int disY = y1 - y2;
+            distance = Math.Sqrt(
+                Math.Pow(disX, 2) + Math.Pow(disY, 2)
+                );
+            
+            return distance;
+        }
 
-			}
-			else if(pithagoras(Math.Abs(PacX - (x - 1)), Math.Abs(PacY - y)) == pithagoras(Math.Abs(PacX - (x + 1)), Math.Abs(PacY - y)))
-			{
-				if (pithagoras(Math.Abs(PacY - (y - 1)), Math.Abs(PacX - x)) < pithagoras(Math.Abs(PacY - (y + 1)), Math.Abs(PacX - x)))
-				{
+       public MoveOption[] PointsAvailable(int x2, int y2)
+        {
+            int ghostX = this.getX();
+            int ghostY = this.getY();
 
-				}
-				else
-				{
-
-				}
-			}
-			else if(pithagoras(Math.Abs(PacX - (x - 1)), Math.Abs(PacY - y)) > pithagoras(Math.Abs(PacX - (x + 1)), Math.Abs(PacY - y)))
-			{
-
-			}
-		}
-		 
-		public void CheckWhereToGo() {
-					
-		}
+            MoveOption[] points = new MoveOption[4];
+            
+            points[0].setDistance(CalcDistance(ghostX+1,ghostY,x2,y2));
+            points[1].setDistance(CalcDistance(ghostX-1,ghostY,x2,y2));
+            points[2].setDistance(CalcDistance(ghostX,ghostY+1,x2,y2));
+            points[3].setDistance(CalcDistance(ghostX,ghostY-1,x2,y2));
+            //Array.Sort(points);
+            MoveOption[] sorted = points.OrderBy(MoveOption => MoveOption.getDistance()).ToArray();
+            
+            return sorted;
+        }
+        
 		public void ChangeLocation(int xGot, int yGot)
 		{
+            
 			x = xGot;
 			y = yGot;
 
@@ -66,7 +86,8 @@ namespace Pacman
 
 		public override string ToString()
 		{
-			return "X";
+            
+            return "X";
 		}
 	}
 }

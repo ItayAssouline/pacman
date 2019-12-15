@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-	class Ghost : IMover
+	class Ghost : GamePiece, IMover
 	{
 
 		private int x;
@@ -62,6 +62,11 @@ namespace Pacman
 		public int getY()
 		{
 			return y;
+		}
+
+		public override string ToString()
+		{
+			return "X";
 		}
 	}
 }

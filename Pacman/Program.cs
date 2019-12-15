@@ -7,24 +7,6 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-	interface IMover
-	{
-		int getX();
-		int getY();
-	}
-
-		public enum GamePiece
-		{
-        Pacman,
-        Cell,
-        Ghost,
-        Wall,
-		}
-
-	
-	
-
-
 	class Program
     {
        
@@ -36,7 +18,7 @@ namespace Pacman
             {
                 for (int colsIdx = 0; colsIdx < cols; colsIdx++)
                 {
-                    board[rowIdx, colsIdx] = GamePiece.Cell;
+                    board[rowIdx, colsIdx] = new Cell();
 					
 				}
                 
@@ -45,12 +27,13 @@ namespace Pacman
             
             PacmanOBJ.ChangeLocation(0, 0);
 
-            board[PacmanOBJ.getX(), PacmanOBJ.getY()] = GamePiece.Pacman;
+            board[PacmanOBJ.getX(), PacmanOBJ.getY()] = new Pacman();
 
             //Obstcales
             board[3,4] = GamePiece.Wall;
 
             //Ghosts
+            // TODO: add ghosts here
             
         }
 
@@ -123,29 +106,7 @@ namespace Pacman
                 {
                     for (int colsIdx = 0; colsIdx < COLS; colsIdx++)
                     {
-						//Console.Write(board[colsIdx,rowIdx]);
-						
-						
-
-						///Previous Displaying
-						
-                        if (board[rowIdx, colsIdx] == GamePiece.Cell)
-                        {
-                            Console.Write(".");
-                        }
-                        else if (board[rowIdx, colsIdx] == GamePiece.Pacman)
-                        {
-                            Console.Write("+");
-                        }
-                        else if (board[rowIdx, colsIdx] == GamePiece.Ghost)
-                        {
-                            Console.Write("X");
-                        }
-                        else if (board[rowIdx, colsIdx] == GamePiece.Wall)
-                        {
-                            Console.Write("|");
-                        }
-						
+						Console.Write(board[colsIdx,rowIdx]);
 					}
 
                     Console.WriteLine();

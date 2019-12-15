@@ -10,6 +10,6 @@ namespace Pacman
 	{
 		int getX();
 		int getY();
-		void ChangeLocation(int xGot, int yGot)
+        void ChangeLocation(int xGot, int yGot);
 	}
 }

@@ -19,3 +19,10 @@ E:\Dropbox\Itay\School\Computer Science\Pacman\Pacman\obj\Debug\Pacman.pdb
 E:\Dropbox\Itay\School\Computer Science\Pacman\Pacman\bin\Debug\Pacman.exe.config
 E:\Dropbox\Itay\School\Computer Science\Pacman\Pacman\bin\Debug\Pacman.exe
 E:\Dropbox\Itay\School\Computer Science\Pacman\Pacman\bin\Debug\Pacman.pdb
+Z:\איתי אסולין\pacman\Pacman\obj\Debug\Pacman.csprojAssemblyReference.cache
+Z:\איתי אסולין\pacman\Pacman\obj\Debug\Pacman.csproj.CoreCompileInputs.cache
+Z:\איתי אסולין\pacman\Pacman\obj\Debug\Pacman.exe
+Z:\איתי אסולין\pacman\Pacman\obj\Debug\Pacman.pdb
+Z:\איתי אסולין\pacman\Pacman\bin\Debug\Pacman.exe.config
+Z:\איתי אסולין\pacman\Pacman\bin\Debug\Pacman.exe
+Z:\איתי אסולין\pacman\Pacman\bin\Debug\Pacman.pdb

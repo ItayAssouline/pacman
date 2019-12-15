@@ -34,7 +34,7 @@ namespace Pacman
 
             //Ghosts
             // TODO: add ghosts here
-            board[2, 2] = new Ghost();
+            board[2, 2] = new Ghost(2,2);
         }
 
         /////////////////

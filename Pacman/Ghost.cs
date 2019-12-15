@@ -7,29 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pacman
 {
-    class MoveOption
-    {
-        int x;
-        int y;
-        double distance;
-        public void setX(int x)
-        {
-            this.x = x;
-        }
-        public void setY(int y)
-        {
-            this.y = y;
-        }
-        public void setDistance(double distance)
-        {
-            this.distance = distance;
-        }
-
-        public double getDistance()
-        {
-            return this.distance;
-        }
-    }
+    
 	class Ghost : GamePiece, IMover
 	{
         public Ghost() : base(PieceType.Ghost)
@@ -64,13 +42,12 @@ namespace Pacman
             points[3].setDistance(CalcDistance(ghostX,ghostY-1,x2,y2));
             //Array.Sort(points);
             MoveOption[] sorted = points.OrderBy(MoveOption => MoveOption.getDistance()).ToArray();
-            
+            Array.Reverse(sorted);
             return sorted;
         }
         
 		public void ChangeLocation(int xGot, int yGot)
 		{
-            
 			x = xGot;
 			y = yGot;
 

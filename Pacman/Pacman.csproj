@@ -45,9 +45,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cell.cs" />
+    <Compile Include="GameBoard.cs" />
     <Compile Include="GamePiece.cs" />
     <Compile Include="Ghost.cs" />
     <Compile Include="IMover.cs" />
+    <Compile Include="MoveOption.cs" />
     <Compile Include="Pacman.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

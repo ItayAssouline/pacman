@@ -11,6 +11,7 @@ namespace Pacman
         int x;
         int y;
         double distance;
+
         public void setX(int x)
         {
             this.x = x;
@@ -23,7 +24,6 @@ namespace Pacman
         {
             this.distance = distance;
         }
-
         public double getDistance()
         {
             return this.distance;

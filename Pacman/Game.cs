@@ -10,10 +10,33 @@ namespace Pacman
     {
         Pacman PacmanObject;
         GamePiece[,] board;
-
-        public Game(Pacman PacmanObject, GamePiece[,] board) {
-            this.PacmanObject = PacmanObject;
+          public void Init(GamePiece[,] board, Pacman PacmanOBJ)
+        {
             this.board = board;
+            int rows = this.board.GetLength(0);
+            int cols = this.board.GetLength(1);
+            for (int rowIdx = 0; rowIdx < rows; rowIdx++)
+            {
+                for (int colsIdx = 0; colsIdx < cols; colsIdx++)
+                {
+                    this.board[rowIdx, colsIdx] = new Cell();
+                }
+            }
+            PacmanOBJ.ChangeLocation(0, 0);
+            this.board[PacmanOBJ.getY(), PacmanOBJ.getX()] = PacmanOBJ;
+            //Obstcales
+            this.board[3, 4] = new Wall();
+
+            //Ghosts
+            // TODO: add ghosts here
+            this.board[2, 2] = new Ghost();
+
+        }
+
+        
+
+        public Game() {
+            
             GameFunction();
         }
 
@@ -22,60 +45,54 @@ namespace Pacman
         public void GameFunction()
         {
 
+            const int ROWS = 10, COLS = 10;
+            GamePiece[,] board = new GamePiece[ROWS, COLS];
+            Pacman PacmanOBJ = new Pacman();
+
+            
+
+            //Initialize Loop
+           Init(board, PacmanOBJ);
+            //Game Loop
+            bool isOn = true;
             GameBoard Gameboard = new GameBoard(board);
-
-
-            string userInput = Console.ReadLine();
-            if (userInput == "a" || userInput == "A" || userInput == "ש")
+            while (isOn)
             {
 
-                Gameboard.executeTurn(4);
-
-                /*
-                if (PacmanObject.getX() > 0 && board[PacmanObject.getY(), PacmanObject.getX() + -1].GetPieceType() != PieceType.Wall)
+                Console.Clear();
+                for (int rowIdx = 0; rowIdx < ROWS; rowIdx++)
                 {
-                    //PacmanObject.x -= 1;
-                    
+                    for (int colsIdx = 0; colsIdx < COLS; colsIdx++)
+                    {
+                        Console.Write(board[rowIdx, colsIdx].ToString());
+                    }
+
+                    Console.WriteLine();
+
                 }
-                */
+                
+
+                    string userInput = Console.ReadLine();
+                    if (userInput == "a" || userInput == "A" || userInput == "ש")
+                    {
+                        Gameboard.executeTurn(4);
+                    }
+                    else if (userInput == "d" || userInput == "D" || userInput == "ג")
+                    {
+                        Gameboard.executeTurn(6);
+                    }
+                    else if (userInput == "S" || userInput == "s" || userInput == "ד")
+                    {
+                        Gameboard.executeTurn(2);
+                    }
+                    else if (userInput == "w" || userInput == "W" || userInput == "'")
+                    {
+                        Gameboard.executeTurn(8);
+                    }
             }
-            else if (userInput == "d" || userInput == "D" || userInput == "ג")
-            {
-                Gameboard.executeTurn(6);
-                /*
-                if (PacmanObject.getX() < rows - 1 && board[PacmanObject.getY(), PacmanObject.getX() + 1].GetPieceType() != PieceType.Wall)
-                {
-                    PacmanObject.ChangeLocation(PacmanObject.getX() + 1, PacmanObject.getY());
-                }
-                */
-            }
+            
 
-
-
-            else if (userInput == "S" || userInput == "s" || userInput == "ד")
-            {
-                Gameboard.executeTurn(2);
-                /*
-                if (PacmanObject.getY() < cols - 1 && board[PacmanObject.getY() + 1, PacmanObject.getX()].GetPieceType() != PieceType.Wall)
-                {
-                    PacmanObject.ChangeLocation(PacmanObject.getX(), PacmanObject.getY() + 1);
-                }
-                */
-
-            }
-            else if (userInput == "w" || userInput == "W" || userInput == "'")
-            {
-                Gameboard.executeTurn(8);
-                ///////////////////
-                ////*
-                /*
-                if (PacmanObject.getY() > 0 && board[PacmanObject.getY() - 1, PacmanObject.getX()].GetPieceType() != PieceType.Wall)
-                {
-                    PacmanObject.ChangeLocation(PacmanObject.getX(), PacmanObject.getY() - 1);
-                }
-                */
-
-            }
+           
         }
     }
 }

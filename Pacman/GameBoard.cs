@@ -41,7 +41,24 @@ namespace Pacman
 
         public void executeTurn(int turn)
         {
-            
+
+            if(turn == 4)
+            {
+
+            }
+            else if(turn == 6)
+            {
+
+            } 
+            else if(turn == 2)
+            {
+
+            }
+            else if(turn == 8)
+            {
+
+            }
+
         }
      
     }

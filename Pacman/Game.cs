@@ -10,8 +10,9 @@ namespace Pacman
     {
         Pacman PacmanObject;
         GamePiece[,] board;
+
           public void Init(GamePiece[,] board, Pacman PacmanOBJ)
-        {
+                {
             this.board = board;
             int rows = this.board.GetLength(0);
             int cols = this.board.GetLength(1);
@@ -31,18 +32,17 @@ namespace Pacman
             // TODO: add ghosts here
             this.board[2, 2] = new Ghost();
 
-        }
+                }
 
         
 
         public Game() {
-            
-            GameFunction();
+           
         }
 
         
 
-        public void GameFunction()
+        public void startGame()
         {
 
             const int ROWS = 10, COLS = 10;
@@ -75,19 +75,19 @@ namespace Pacman
                     string userInput = Console.ReadLine();
                     if (userInput == "a" || userInput == "A" || userInput == "ש")
                     {
-                        Gameboard.executeTurn(4);
+                        Gameboard.executeTurn(GameBoard.MoveDir.Left);
                     }
                     else if (userInput == "d" || userInput == "D" || userInput == "ג")
                     {
-                        Gameboard.executeTurn(6);
+                        Gameboard.executeTurn(GameBoard.MoveDir.Right);
                     }
                     else if (userInput == "S" || userInput == "s" || userInput == "ד")
                     {
-                        Gameboard.executeTurn(2);
+                        Gameboard.executeTurn(GameBoard.MoveDir.Down);
                     }
                     else if (userInput == "w" || userInput == "W" || userInput == "'")
                     {
-                        Gameboard.executeTurn(8);
+                        Gameboard.executeTurn(GameBoard.MoveDir.Up);
                     }
             }
             

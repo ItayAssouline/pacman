@@ -26,3 +26,7 @@ Z:\איתי אסולין\pacman\Pacman\obj\Debug\Pacman.pdb
 Z:\איתי אסולין\pacman\Pacman\bin\Debug\Pacman.exe.config
 Z:\איתי אסולין\pacman\Pacman\bin\Debug\Pacman.exe
 Z:\איתי אסולין\pacman\Pacman\bin\Debug\Pacman.pdb
+C:\Users\student\Documents\pacman\Pacman\obj\Debug\Pacman.csprojAssemblyReference.cache
+C:\Users\student\Documents\pacman\Pacman\obj\Debug\Pacman.csproj.CoreCompileInputs.cache
+C:\Users\student\Documents\pacman\Pacman\obj\Debug\Pacman.exe
+C:\Users\student\Documents\pacman\Pacman\obj\Debug\Pacman.pdb
